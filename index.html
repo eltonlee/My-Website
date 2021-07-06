@@ -6,13 +6,14 @@
 	<title>Elton Lee's porfolio</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 </head>
 
-<body class="is-preload">
+<body onload = "main()">               <!-- Original is <body class="is-preload"> -->
 
 	<!-- Wrapper -->
 	<div id="wrapper">
@@ -99,6 +100,14 @@
 					<h2>Blocky 3D Animal</h2>
 					
 				</header>
+				<p> A 3D animal figure that can be moved around using a mouse. It is coded in HTML and JavaScript. It also utilizes WebGL to create the 3D renders.</p>
+				<canvas id="webgl" width="800" height="800">
+					Please use a browser that supports "canvas"
+				</canvas>
+				
+				<h2>Source Code</h2>
+				<a href="https://github.com/eltonlee/WebGL/tree/main/Blocky%203D%20Animal">Blocky 3D Animal Code</a>
+
 				<!--<ul class="statistics">
 					<li class="style1">
 						<span class="icon solid fa-code-branch"></span>
@@ -128,11 +137,11 @@
 					vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis
 					porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam
 					porta. Cras eu ornare dui curabitur lacinia.</p> -->
-				<footer class="major">
+				<!--<footer class="major">
 					<ul class="actions special">
 						<li><a href="generic.html" class="button">Learn More</a></li>
 					</ul>
-				</footer>
+				</footer> -->
 			</section>
 
 			<!-- Get Started -->
@@ -196,6 +205,12 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+
+	<script src="lib/webgl-utils.js"></script>
+	<script src="lib/webgl-debug.js"></script>
+	<script src="lib/cuon-utils.js"></script>
+	<script src="lib/cuon-matrix.js"></script>
+	<script src="src/draw.js"></script>
 
 </body>
 

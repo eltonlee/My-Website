@@ -23,6 +23,22 @@ function main() {
   // Retrieve <canvas> element
   var canvas = document.getElementById('webgl');
 
+  // Set canvas resolution based on display size
+  var needsResize = false;
+  function resizeCanvas() {
+    var displayWidth = canvas.clientWidth;
+    var displayHeight = displayWidth; // Keep it square
+
+    if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
+      canvas.width = displayWidth;
+      canvas.height = displayHeight;
+      needsResize = true;
+    }
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
   // Get the rendering context for WebGL
   var gl = getWebGLContext(canvas);
   if (!gl) {
@@ -67,6 +83,13 @@ function main() {
   document.onkeydown = function(ev){ keydown(ev, gl, n, viewProjMatrix, u_MvpMatrix, currentAngle, canvas); };
 
   var tick = function() {   // Start drawing
+    // Update viewport and projection matrix if canvas was resized
+    if (needsResize) {
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      viewProjMatrix.setPerspective(30.0, canvas.width / canvas.height, 1.0, 100.0);
+      viewProjMatrix.lookAt(3.0, 3.0, 7.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+      needsResize = false;
+    }
     draw(gl, n, viewProjMatrix, u_MvpMatrix, currentAngle);
     requestAnimationFrame(tick, canvas);
   };
